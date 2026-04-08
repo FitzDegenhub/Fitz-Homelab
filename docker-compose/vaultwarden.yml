@@ -1,0 +1,62 @@
+# =============================================================================
+# Vaultwarden - Self-hosted Bitwarden Server
+# =============================================================================
+# Password manager accessible ONLY via Tailscale (no exposed ports).
+# Uses a Tailscale sidecar container with TS Serve for HTTPS access.
+#
+# This is the most secure way to self-host Vaultwarden - zero ports
+# exposed to LAN or internet, all traffic routed through Tailscale's
+# encrypted mesh network with automatic HTTPS via Tailscale Serve.
+#
+# Prerequisites:
+#   1. Generate a Tailscale auth key at https://login.tailscale.com/admin/settings/keys
+#   2. Create serve config: ./tailscale/config/serve.json
+#
+# serve.json example:
+#   {
+#     "TCP": { "443": { "HTTPS": true } },
+#     "Web": {
+#       "https://vaultwarden.your-tailnet.ts.net:443": {
+#         "Handlers": { "/": { "Proxy": "http://127.0.0.1:80" } }
+#       }
+#     }
+#   }
+#
+# Usage:
+#   docker compose -f docker-compose/vaultwarden.yml up -d
+#
+# Access:
+#   https://vaultwarden.your-tailnet.ts.net (from any Tailscale device)
+# =============================================================================
+
+services:
+  ts-vaultwarden:
+    image: tailscale/tailscale:latest
+    container_name: ts-vaultwarden
+    hostname: vaultwarden
+    environment:
+      - TS_HOSTNAME=vaultwarden
+      - TS_STATE_DIR=/var/lib/tailscale
+      - TS_SERVE_CONFIG=/config/serve.json
+    volumes:
+      - ./tailscale/state:/var/lib/tailscale
+      - ./tailscale/config:/config
+    devices:
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - net_admin
+      - sys_module
+    restart: unless-stopped
+
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    network_mode: service:ts-vaultwarden
+    depends_on:
+      - ts-vaultwarden
+    environment:
+      - ENV_FILE=/data/.env
+      - CONFIG_FILE=/dev/null
+    restart: unless-stopped
+    volumes:
+      - ./data/:/data/
