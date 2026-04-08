@@ -2,9 +2,6 @@
 
 Self-hosted media automation, document management, password vault, and more - running on a **Ugreen DXP4800 Plus** with Docker.
 
-<!-- TODO: Add a screenshot of your Homepage dashboard here -->
-<!-- ![Dashboard](docs/screenshots/dashboard.png) -->
-
 ---
 
 ## Hardware
@@ -14,7 +11,7 @@ Self-hosted media automation, document management, password vault, and more - ru
 | **NAS** | Ugreen DXP4800 Plus |
 | **Transcoding** | Intel QuickSync (hardware via `/dev/dri`) |
 | **Storage** | Multi-volume - configs on Volume 2, media on Volume 1 |
-| **Clients** | NVIDIA Shield TV Pro (2019), LG CX OLED |
+| **Clients** | NVIDIA Shield TV Pro (2019) |
 | **Audio** | LG SN11RG 7.1.4 Dolby Atmos soundbar |
 | **Remote Access** | Tailscale mesh VPN |
 | **DNS** | AdGuard Home (macvlan, dedicated LAN IP) |
@@ -82,7 +79,6 @@ Self-hosted media automation, document management, password vault, and more - ru
 | Service | Port | Purpose |
 |---------|------|---------|
 | [Portainer CE](https://www.portainer.io/) | `9444` | Docker management UI |
-| [Homepage](https://gethomepage.dev/) | `3000` | Service dashboard |
 | [Duplicati](https://www.duplicati.com/) | `8200` | Encrypted backups (AES-256) |
 
 ## Architecture
@@ -98,14 +94,14 @@ Internet
     |
 [Ugreen DXP4800 Plus]
     |
-    +--- arr-stack (Docker Compose - 13 containers)
+    +--- arr-stack (Docker Compose - 12 containers)
     |       +--- Prowlarr -> Sonarr/Radarr
     |       +--- Sonarr/Radarr -> SABnzbd/qBittorrent
     |       +--- Jellyfin (HW transcoding via Intel QuickSync)
     |       +--- Jellyseerr -> Jellyfin + Sonarr/Radarr
     |       +--- Immich + ML + PostgreSQL + Valkey
     |       +--- Bazarr, Recyclarr, FlareSolverr
-    |       +--- Homepage, Duplicati, Requestrr
+    |       +--- Duplicati, Requestrr
     |
     +--- jellyfin-stack (Docker Compose - 1 container)
     |       +--- Jellyfin (standalone instance)
@@ -124,7 +120,7 @@ Internet
             +--- AdGuard Home (dedicated LAN IP as network DNS)
 ```
 
-**Total: ~24 containers across 4 Compose stacks + standalone services**
+**Total: ~23 containers across 4 Compose stacks + standalone services**
 
 ### Media Flow
 
@@ -162,7 +158,7 @@ Custom format definitions are in [`recyclarr/custom-formats/`](recyclarr/custom-
 
 | Stack | Containers | Compose File |
 |-------|-----------|--------------|
-| **arr-stack** | 13 | [`docker-compose/arr-stack.yml`](docker-compose/arr-stack.yml) |
+| **arr-stack** | 12 | [`docker-compose/arr-stack.yml`](docker-compose/arr-stack.yml) |
 | **jellyfin-stack** | 1 | Standalone Jellyfin instance |
 | **paperless** | 3 | [`docker-compose/paperless.yml`](docker-compose/paperless.yml) |
 | **vaultwarden** | 2 | [`docker-compose/vaultwarden.yml`](docker-compose/vaultwarden.yml) |
@@ -193,7 +189,6 @@ Custom format definitions are in [`recyclarr/custom-formats/`](recyclarr/custom-
         immich/
             postgres/
             model-cache/
-        homepage/config/
         dispatcharr/
         ...
     jellyfin-stack/      # Standalone Jellyfin
@@ -242,12 +237,6 @@ Custom format definitions are in [`recyclarr/custom-formats/`](recyclarr/custom-
 
    # Password manager (configure Tailscale auth key first)
    docker compose -f docker-compose/vaultwarden.yml up -d
-   ```
-
-4. Copy and configure Homepage dashboard:
-   ```bash
-   cp homepage/*.yaml.example /path/to/homepage/config/
-   # Remove .example suffix and fill in API keys
    ```
 
 ## Security

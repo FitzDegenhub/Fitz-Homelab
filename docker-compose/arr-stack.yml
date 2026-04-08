@@ -252,24 +252,6 @@ services:
     networks: [arr-net]
 
   # ---------------------------------------------------------------------------
-  # Dashboard
-  # ---------------------------------------------------------------------------
-  homepage:
-    image: ghcr.io/gethomepage/homepage:latest
-    container_name: homepage
-    environment:
-      - PUID=${PUID}
-      - PGID=${PGID}
-      - TZ=${TZ}
-    volumes:
-      - ${DOCKER_CONFIG_PATH}/homepage/config:/app/config
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-    ports:
-      - "3000:3000"
-    restart: unless-stopped
-    networks: [arr-net]
-
-  # ---------------------------------------------------------------------------
   # Backups
   # ---------------------------------------------------------------------------
   duplicati:
