@@ -1,170 +1,224 @@
+<div align="center">
+
 # Fitz Homelab
 
-Self-hosted media automation, document management, password vault, and more - running on a **Ugreen DXP4800 Plus** with Docker.
+**Self-hosted everything on a Ugreen DXP4800 Plus**
+
+Media automation, photo management, document archival, password vault, cloud storage, and network-wide ad blocking - all running on a single NAS.
+
+[![Docker](https://img.shields.io/badge/Docker-23_Containers-2496ED?style=for-the-badge&logo=docker&logoColor=white)](docker-compose/)
+[![Compose](https://img.shields.io/badge/Compose-4_Stacks-2496ED?style=for-the-badge&logo=docker&logoColor=white)](#docker-compose-stacks)
+[![Tailscale](https://img.shields.io/badge/Tailscale-Mesh_VPN-4C8BF5?style=for-the-badge&logo=tailscale&logoColor=white)](https://tailscale.com/)
+[![Ugreen](https://img.shields.io/badge/Ugreen-DXP4800_Plus-4CAF50?style=for-the-badge&logoColor=white)](#hardware)
+
+</div>
+
+---
+
+## The Stack
+
+### Media Automation
+
+> The arr suite - fully automated media acquisition, organization, and subtitle management.
+
+[![Sonarr](https://img.shields.io/badge/Sonarr-:8989-2196F3?style=flat-square&logo=sonarr&logoColor=white)](https://sonarr.tv/)
+[![Radarr](https://img.shields.io/badge/Radarr-:7878-FFC107?style=flat-square&logo=radarr&logoColor=black)](https://radarr.video/)
+[![Prowlarr](https://img.shields.io/badge/Prowlarr-:9696-E040FB?style=flat-square&logo=prowlarr&logoColor=white)](https://prowlarr.com/)
+[![Bazarr](https://img.shields.io/badge/Bazarr-:6767-9C27B0?style=flat-square&logo=bazarr&logoColor=white)](https://www.bazarr.media/)
+[![Recyclarr](https://img.shields.io/badge/Recyclarr-Daily_Sync-00BCD4?style=flat-square)](https://recyclarr.dev/)
+[![FlareSolverr](https://img.shields.io/badge/FlareSolverr-:8191-FF5722?style=flat-square)](https://github.com/FlareSolverr/FlareSolverr)
+
+### Download Clients
+
+[![SABnzbd](https://img.shields.io/badge/SABnzbd-:8085-F9A825?style=flat-square&logo=sabnzbd&logoColor=black)](https://sabnzbd.org/)
+[![qBittorrent](https://img.shields.io/badge/qBittorrent-VPN-2F67BA?style=flat-square&logo=qbittorrent&logoColor=white)](https://www.qbittorrent.org/)
+
+### Media Playback
+
+> Jellyfin with hardware transcoding, request management via Jellyseerr, and Discord integration.
+
+[![Jellyfin](https://img.shields.io/badge/Jellyfin-:8899-A359D6?style=flat-square&logo=jellyfin&logoColor=white)](https://jellyfin.org/)
+[![Jellyseerr](https://img.shields.io/badge/Jellyseerr-:5055-7B2FBE?style=flat-square)](https://github.com/Fallenbagel/jellyseerr)
+[![Requestrr](https://img.shields.io/badge/Requestrr-:4545-5865F2?style=flat-square&logo=discord&logoColor=white)](https://github.com/thomst08/requestrr)
+
+### Photos & Documents
+
+> Immich for photos with ML-powered face/object detection. Paperless-ngx for document OCR and archival.
+
+[![Immich](https://img.shields.io/badge/Immich-:2283-4250AF?style=flat-square&logo=immich&logoColor=white)](https://immich.app/)
+[![Paperless-ngx](https://img.shields.io/badge/Paperless--ngx-:8010-17541f?style=flat-square)](https://docs.paperless-ngx.com/)
+
+### Cloud & Files
+
+[![Nextcloud](https://img.shields.io/badge/Nextcloud-:35041-0082C9?style=flat-square&logo=nextcloud&logoColor=white)](https://nextcloud.com/)
+
+### Security & Access
+
+> Vaultwarden with zero exposed ports - only accessible via Tailscale Serve HTTPS. AdGuard as network DNS.
+
+[![Vaultwarden](https://img.shields.io/badge/Vaultwarden-Tailscale_Only-175DDC?style=flat-square&logo=bitwarden&logoColor=white)](https://github.com/dani-garcia/vaultwarden)
+[![AdGuard Home](https://img.shields.io/badge/AdGuard_Home-macvlan-68BC71?style=flat-square&logo=adguard&logoColor=white)](https://adguard.com/en/adguard-home/overview.html)
+[![Tailscale](https://img.shields.io/badge/Tailscale-Mesh_VPN-4C8BF5?style=flat-square&logo=tailscale&logoColor=white)](https://tailscale.com/)
+
+### System & Management
+
+[![Portainer](https://img.shields.io/badge/Portainer-:9444-13BEF9?style=flat-square&logo=portainer&logoColor=white)](https://www.portainer.io/)
+[![Duplicati](https://img.shields.io/badge/Duplicati-:8200_AES--256-2E7D32?style=flat-square)](https://www.duplicati.com/)
 
 ---
 
 ## Hardware
 
-| Component | Details |
-|-----------|---------|
-| **NAS** | Ugreen DXP4800 Plus |
-| **Transcoding** | Intel QuickSync (hardware via `/dev/dri`) |
-| **Storage** | Multi-volume - configs on Volume 2, media on Volume 1 |
-| **Clients** | NVIDIA Shield TV Pro (2019) |
-| **Audio** | LG SN11RG 7.1.4 Dolby Atmos soundbar |
-| **Remote Access** | Tailscale mesh VPN |
-| **DNS** | AdGuard Home (macvlan, dedicated LAN IP) |
+| | Component | Details |
+|---|-----------|---------|
+| **NAS** | Ugreen DXP4800 Plus | Intel QuickSync HW transcoding |
+| **Storage** | Multi-volume | Configs on Vol 2, Media on Vol 1 |
+| **Client** | NVIDIA Shield TV Pro (2019) | HDR10, HDR10+, Dolby Vision |
+| **Audio** | LG SN11RG | 7.1.4 Dolby Atmos, TrueHD passthrough |
+| **VPN** | Tailscale | Mesh network, zero open ports |
+| **DNS** | AdGuard Home | macvlan, dedicated LAN IP |
 
-## Services
-
-### Media Automation (arr-stack)
-
-| Service | Port | Purpose |
-|---------|------|---------|
-| [Sonarr](https://sonarr.tv/) | `8989` | TV show management & automation |
-| [Radarr](https://radarr.video/) | `7878` | Movie management & automation |
-| [Prowlarr](https://prowlarr.com/) | `9696` | Indexer management for Sonarr/Radarr |
-| [Bazarr](https://www.bazarr.media/) | `6767` | Automated subtitle downloads |
-| [Recyclarr](https://recyclarr.dev/) | - | TRaSH Guides quality profile sync (daily) |
-| [FlareSolverr](https://github.com/FlareSolverr/FlareSolverr) | `8191` | Cloudflare bypass for indexers |
-
-### Download Clients
-
-| Service | Port | Purpose |
-|---------|------|---------|
-| [SABnzbd](https://sabnzbd.org/) | `8085` | Usenet downloader |
-| [qBittorrent](https://www.qbittorrent.org/) | - | Torrent client (linuxserver) |
-
-### Media Playback
-
-| Service | Port | Purpose |
-|---------|------|---------|
-| [Jellyfin](https://jellyfin.org/) | `8899` | Media server with HW transcoding |
-| [Jellyseerr](https://github.com/Fallenbagel/jellyseerr) | `5055` | Media request management |
-| [Requestrr](https://github.com/thomst08/requestrr) | `4545` | Discord bot for media requests |
-
-### Photos
-
-| Service | Port | Purpose |
-|---------|------|---------|
-| [Immich](https://immich.app/) | `2283` | Self-hosted Google Photos alternative |
-| Immich ML | - | Face/object detection & smart search |
-| PostgreSQL (vectorchord) + Valkey | - | Immich backend services |
-
-### Documents
-
-| Service | Port | Purpose |
-|---------|------|---------|
-| [Paperless-ngx](https://docs.paperless-ngx.com/) | `8010` | Document scanner, OCR, and archive |
-| PostgreSQL 16 + Redis 7 | - | Paperless backend services |
-
-### Cloud & Files
-
-| Service | Port | Purpose |
-|---------|------|---------|
-| [Nextcloud](https://nextcloud.com/) | `35041` | Self-hosted file sync & cloud storage |
-| PostgreSQL | - | Nextcloud database |
-
-### Security & Access
-
-| Service | Port | Purpose |
-|---------|------|---------|
-| [Vaultwarden](https://github.com/dani-garcia/vaultwarden) | - | Self-hosted Bitwarden password manager |
-| [Tailscale](https://tailscale.com/) sidecar | - | Vaultwarden accessible only via Tailscale Serve (HTTPS) |
-| [AdGuard Home](https://adguard.com/en/adguard-home/overview.html) | macvlan | Network-wide DNS ad blocking |
-
-### System & Management
-
-| Service | Port | Purpose |
-|---------|------|---------|
-| [Portainer CE](https://www.portainer.io/) | `9444` | Docker management UI |
-| [Duplicati](https://www.duplicati.com/) | `8200` | Encrypted backups (AES-256) |
+---
 
 ## Architecture
 
-```
-Internet
-    |
-[Router/Gateway]
-    |
-    +--- Tailscale Mesh VPN
-    |       +--- Vaultwarden (HTTPS via Tailscale Serve, zero exposed ports)
-    |       +--- All services accessible remotely
-    |
-[Ugreen DXP4800 Plus]
-    |
-    +--- arr-stack (Docker Compose - 12 containers)
-    |       +--- Prowlarr -> Sonarr/Radarr
-    |       +--- Sonarr/Radarr -> SABnzbd/qBittorrent
-    |       +--- Jellyfin (HW transcoding via Intel QuickSync)
-    |       +--- Jellyseerr -> Jellyfin + Sonarr/Radarr
-    |       +--- Immich + ML + PostgreSQL + Valkey
-    |       +--- Bazarr, Recyclarr, FlareSolverr
-    |       +--- Duplicati, Requestrr
-    |
-    +--- jellyfin-stack (Docker Compose - 1 container)
-    |       +--- Jellyfin (standalone instance)
-    |
-    +--- paperless (Docker Compose - 3 containers)
-    |       +--- Paperless-ngx + PostgreSQL 16 + Redis 7
-    |
-    +--- vaultwarden (Docker Compose - 2 containers)
-    |       +--- Vaultwarden + Tailscale sidecar
-    |
-    +--- Standalone containers
-    |       +--- Nextcloud + PostgreSQL
-    |       +--- Portainer CE
-    |
-    +--- macvlan Network
-            +--- AdGuard Home (dedicated LAN IP as network DNS)
-```
+```mermaid
+graph TB
+    Internet((Internet))
+    Router[Router / Gateway]
+    TS[Tailscale Mesh VPN]
 
-**Total: ~23 containers across 4 Compose stacks + standalone services**
+    Internet --> Router
+    Router --> TS
+    Router --> NAS
+
+    subgraph NAS["Ugreen DXP4800 Plus"]
+        direction TB
+
+        subgraph arr["arr-stack  |  12 containers"]
+            direction LR
+            Prowlarr --> Sonarr
+            Prowlarr --> Radarr
+            Sonarr --> SABnzbd
+            Radarr --> SABnzbd
+            Sonarr --> qBit[qBittorrent]
+            Radarr --> qBit
+            SABnzbd --> Jellyfin
+            qBit --> Jellyfin
+            Jellyseerr --> Sonarr
+            Jellyseerr --> Radarr
+            Jellyseerr --> Jellyfin
+            Bazarr --> Sonarr
+            Bazarr --> Radarr
+        end
+
+        subgraph photos["photos & docs"]
+            direction LR
+            ImmichServer[Immich] --> ImmichML[Immich ML]
+            ImmichServer --> ImmichPG[(PostgreSQL)]
+            ImmichServer --> ImmichRedis[(Valkey)]
+            Paperless[Paperless-ngx] --> PaperlessPG[(PostgreSQL)]
+            Paperless --> PaperlessRedis[(Redis)]
+        end
+
+        subgraph vault["vaultwarden"]
+            direction LR
+            TSProxy[Tailscale Sidecar] --> VW[Vaultwarden]
+        end
+
+        subgraph standalone["standalone"]
+            direction LR
+            Nextcloud --> NCPG[(PostgreSQL)]
+            Portainer
+        end
+
+        subgraph dns["macvlan network"]
+            AdGuard[AdGuard Home]
+        end
+
+        Duplicati
+        Recyclarr
+        Requestrr
+    end
+
+    TS -->|HTTPS| TSProxy
+
+    style NAS fill:#1a1a2e,stroke:#4CAF50,stroke-width:2px,color:#fff
+    style arr fill:#1e3a5f,stroke:#2196F3,stroke-width:1px,color:#fff
+    style photos fill:#1e3a5f,stroke:#4250AF,stroke-width:1px,color:#fff
+    style vault fill:#1e3a5f,stroke:#175DDC,stroke-width:1px,color:#fff
+    style standalone fill:#1e3a5f,stroke:#0082C9,stroke-width:1px,color:#fff
+    style dns fill:#1e3a5f,stroke:#68BC71,stroke-width:1px,color:#fff
+    style TS fill:#4C8BF5,stroke:#4C8BF5,color:#fff
+    style Internet fill:#333,stroke:#666,color:#fff
+    style Router fill:#333,stroke:#666,color:#fff
+```
 
 ### Media Flow
 
-```
-Request (Jellyseerr / Requestrr via Discord)
-    -> Sonarr / Radarr (search & organize)
-    -> Prowlarr (indexer queries)
-    -> SABnzbd / qBittorrent (download)
-    -> Sonarr / Radarr (import & rename)
-    -> Jellyfin (stream to Shield TV Pro)
-    -> Bazarr (fetch subtitles)
+```mermaid
+graph LR
+    A["Request via Jellyseerr\nor Discord bot"] --> B[Sonarr / Radarr]
+    B --> C[Prowlarr\nindexer search]
+    C --> D["SABnzbd / qBittorrent\ndownload"]
+    D --> E[Sonarr / Radarr\nimport & rename]
+    E --> F["Jellyfin\nstream to Shield TV"]
+    E --> G[Bazarr\nfetch subtitles]
+
+    style A fill:#7B2FBE,stroke:#7B2FBE,color:#fff
+    style B fill:#2196F3,stroke:#2196F3,color:#fff
+    style C fill:#E040FB,stroke:#E040FB,color:#fff
+    style D fill:#F9A825,stroke:#F9A825,color:#000
+    style E fill:#2196F3,stroke:#2196F3,color:#fff
+    style F fill:#A359D6,stroke:#A359D6,color:#fff
+    style G fill:#9C27B0,stroke:#9C27B0,color:#fff
 ```
 
 ### Vaultwarden via Tailscale Serve
 
-The Vaultwarden setup uses a **Tailscale sidecar pattern** - zero ports are exposed to the LAN or internet. The Tailscale container handles networking and serves Vaultwarden over HTTPS on the tailnet:
+Zero ports exposed to LAN or internet. The Tailscale sidecar handles all networking:
 
+```mermaid
+graph LR
+    Device["Any Tailscale Device"] -->|HTTPS| TSNet["vaultwarden.tailnet.ts.net"]
+    TSNet --> TSC["ts-vaultwarden container\n(Tailscale Serve)"]
+    TSC -->|"network_mode: service"| VW["vaultwarden container"]
+
+    style Device fill:#333,stroke:#666,color:#fff
+    style TSNet fill:#4C8BF5,stroke:#4C8BF5,color:#fff
+    style TSC fill:#4C8BF5,stroke:#4C8BF5,color:#fff
+    style VW fill:#175DDC,stroke:#175DDC,color:#fff
 ```
-[Any Tailscale device] --HTTPS--> vaultwarden.tailnet.ts.net
-    -> ts-vaultwarden container (Tailscale Serve reverse proxy)
-    -> vaultwarden container (network_mode: service:ts-vaultwarden)
-```
 
-### Recyclarr / TRaSH Guides
+---
 
-Quality profiles are synced daily via Recyclarr, optimized for:
-- **NVIDIA Shield TV Pro** (HDR10, HDR10+, Dolby Vision Profile 5/7/8)
-- **Dolby Atmos passthrough** via LG SN11RG soundbar
-- Lossless audio priority (TrueHD Atmos, DTS-HD MA)
-- Tiered quality: Remux > WEB-DL with upgrade paths
+## Recyclarr / TRaSH Guides
 
-Custom format definitions are in [`recyclarr/custom-formats/`](recyclarr/custom-formats/).
+Quality profiles synced daily, optimized for the home theater setup:
+
+| Target | Optimization |
+|--------|-------------|
+| **NVIDIA Shield TV Pro** | HDR10, HDR10+, Dolby Vision (Profile 5/7/8) |
+| **LG SN11RG Soundbar** | TrueHD Atmos, DTS-X, DTS-HD MA passthrough |
+| **Quality Priority** | Remux > WEB-DL with automatic upgrade paths |
+| **Audio Priority** | Lossless first (TrueHD Atmos > DTS-HD MA > DD+ Atmos) |
+
+Custom format definitions: [`recyclarr/custom-formats/`](recyclarr/custom-formats/)
+
+---
 
 ## Docker Compose Stacks
 
-| Stack | Containers | Compose File |
-|-------|-----------|--------------|
-| **arr-stack** | 12 | [`docker-compose/arr-stack.yml`](docker-compose/arr-stack.yml) |
+| Stack | Containers | Config |
+|-------|:----------:|--------|
+| **arr-stack** | 12 | [`arr-stack.yml`](docker-compose/arr-stack.yml) |
 | **jellyfin-stack** | 1 | Standalone Jellyfin instance |
-| **paperless** | 3 | [`docker-compose/paperless.yml`](docker-compose/paperless.yml) |
-| **vaultwarden** | 2 | [`docker-compose/vaultwarden.yml`](docker-compose/vaultwarden.yml) |
-| **standalone** | ~5 | Nextcloud, Portainer, PostgreSQL (managed via Portainer) |
+| **paperless** | 3 | [`paperless.yml`](docker-compose/paperless.yml) |
+| **vaultwarden** | 2 | [`vaultwarden.yml`](docker-compose/vaultwarden.yml) |
+| **standalone** | ~5 | Nextcloud, Portainer, PostgreSQL |
 
-## Volume Layout
+<details>
+<summary><strong>Volume Layout</strong></summary>
 
 ```
 /volume1/Media/
@@ -206,7 +260,10 @@ Custom format definitions are in [`recyclarr/custom-formats/`](recyclarr/custom-
     postgres-1/
 ```
 
-## Getting Started
+</details>
+
+<details>
+<summary><strong>Getting Started</strong></summary>
 
 ### Prerequisites
 
@@ -239,24 +296,39 @@ Custom format definitions are in [`recyclarr/custom-formats/`](recyclarr/custom-
    docker compose -f docker-compose/vaultwarden.yml up -d
    ```
 
-## Security
-
-- **Zero ports exposed to the internet** - all remote access via Tailscale
-- **Vaultwarden** uses Tailscale Serve sidecar - not even exposed on LAN
-- **AdGuard Home** on macvlan with dedicated IP as network DNS
-- **Duplicati** backups encrypted with AES-256
-- Secrets managed via `.env` files with `chmod 600` permissions
-- API keys and passwords are never committed to this repo
-
-> **If you fork this:** The `.gitignore` blocks all `.env` files and sensitive configs, but always double-check `git status` before pushing.
-
-## Acknowledgements
-
-- [TRaSH Guides](https://trash-guides.info/) - Quality profile configurations
-- [LinuxServer.io](https://www.linuxserver.io/) - Docker images
-- [r/selfhosted](https://www.reddit.com/r/selfhosted/) - Inspiration and troubleshooting
-- [r/homelab](https://www.reddit.com/r/homelab/) - The rabbit hole that started it all
+</details>
 
 ---
 
+## Security
+
+| | Measure | Details |
+|---|---------|---------|
+| ![shield](https://img.shields.io/badge/-PASS-2E7D32?style=flat-square) | **Zero exposed ports** | All remote access via Tailscale mesh VPN |
+| ![shield](https://img.shields.io/badge/-PASS-2E7D32?style=flat-square) | **Vaultwarden isolated** | Tailscale Serve sidecar - not even on LAN |
+| ![shield](https://img.shields.io/badge/-PASS-2E7D32?style=flat-square) | **DNS filtering** | AdGuard Home on macvlan with dedicated IP |
+| ![shield](https://img.shields.io/badge/-PASS-2E7D32?style=flat-square) | **Encrypted backups** | Duplicati with AES-256 encryption |
+| ![shield](https://img.shields.io/badge/-PASS-2E7D32?style=flat-square) | **Secrets management** | `.env` files with `chmod 600` permissions |
+| ![shield](https://img.shields.io/badge/-PASS-2E7D32?style=flat-square) | **No secrets in repo** | `.gitignore` blocks all sensitive files |
+
+> **If you fork this:** The `.gitignore` blocks all `.env` files and sensitive configs, but always double-check `git status` before pushing.
+
+---
+
+<div align="center">
+
+### Built With
+
+[![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![LinuxServer](https://img.shields.io/badge/LinuxServer.io-DA3B8A?style=for-the-badge&logo=linux&logoColor=white)](https://www.linuxserver.io/)
+[![TRaSH Guides](https://img.shields.io/badge/TRaSH_Guides-FFA500?style=for-the-badge)](https://trash-guides.info/)
+[![Tailscale](https://img.shields.io/badge/Tailscale-4C8BF5?style=for-the-badge&logo=tailscale&logoColor=white)](https://tailscale.com/)
+
+---
+
+[![r/selfhosted](https://img.shields.io/badge/r%2Fselfhosted-FF4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/selfhosted/)
+[![r/homelab](https://img.shields.io/badge/r%2Fhomelab-FF4500?style=flat-square&logo=reddit&logoColor=white)](https://www.reddit.com/r/homelab/)
+
 *Running on a Ugreen DXP4800 Plus and an unhealthy amount of tinkering.*
+
+</div>
