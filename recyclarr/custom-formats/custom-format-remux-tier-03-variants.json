@@ -1,0 +1,115 @@
+{
+  "name": "Remux Tier 03 (Variants)",
+  "includeCustomFormatWhenRenaming": false,
+  "specifications": [
+    {
+      "name": "Remux Quality",
+      "implementation": "QualityModifierSpecification",
+      "negate": false,
+      "required": true,
+      "fields": {
+        "value": 5
+      }
+    },
+    {
+      "name": "ATELiER (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bATELiER\\b"
+      }
+    },
+    {
+      "name": "decibeL (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bdecibeL\\b"
+      }
+    },
+    {
+      "name": "EPSiLON (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bEPSiLON\\b"
+      }
+    },
+    {
+      "name": "HiFi (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bHiFi\\b"
+      }
+    },
+    {
+      "name": "iFT (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\biFT\\b"
+      }
+    },
+    {
+      "name": "KRaLiMaRKo (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bKRaLiMaRKo\\b"
+      }
+    },
+    {
+      "name": "NTb (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bNTb\\b"
+      }
+    },
+    {
+      "name": "PTP (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bPTP\\b"
+      }
+    },
+    {
+      "name": "SumVision (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bSumVision\\b"
+      }
+    },
+    {
+      "name": "TOA (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bTOA\\b"
+      }
+    },
+    {
+      "name": "TRiToN (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bTRiToN\\b"
+      }
+    }
+  ]
+}
+

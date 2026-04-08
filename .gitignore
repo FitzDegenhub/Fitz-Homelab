@@ -1,0 +1,96 @@
+# ============================================
+# Secrets & Credentials - NEVER commit these
+# ============================================
+.env
+*.env
+!.env.example
+secrets.env*
+!secrets.env.template.example
+aphrodite.env
+
+# ============================================
+# Logs
+# ============================================
+*.log
+logs/
+
+# ============================================
+# Binary files & archives
+# ============================================
+*.zip
+*.exe
+*.tar.gz
+*.7z
+
+# ============================================
+# Working docs & personal notes
+# ============================================
+*.docx
+*.pdf
+*.xml
+
+# ============================================
+# Tools & third-party repos
+# ============================================
+immich-go/
+trash-guides/
+
+# ============================================
+# OS / Editor
+# ============================================
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ============================================
+# Backup files
+# ============================================
+*.backup*
+*.bak
+
+# ============================================
+# Original unsanitized configs (contain real IPs/keys)
+# ============================================
+# These are the working files from the original Cursor setup.
+# The repo only includes sanitized versions in docker-compose/ and homepage/
+docker-compose.yml
+docker-compose-jellyfin.yml
+docker-compose-aphrodite.yml
+immich-docker-compose-official.yml
+recyclarr.yml
+recyclarr.yml.backup*
+homepage-services.yaml
+homepage-settings.yaml
+homepage-widgets.yaml
+homepage-docker.yaml
+SECURITY-CHECKLIST.md
+secrets.env.template
+IMMICH-ENV-ADDITION.txt
+nzb360-setup.txt
+
+# Original setup guides (contain real IPs/SSH addresses)
+ADGUARD-HOME-SETUP.md
+BLOCK-MULTI-DISC-INSTRUCTIONS.md
+DEPLOYMENT-INSTRUCTIONS.md
+GOOGLE-PHOTOS-QUICK-START.md
+GOOGLE-PHOTOS-UPLOAD-GUIDE.md
+IMMICH-SETUP.md
+JELLYFIN-JELLYSEERR-SETUP.md
+NETWORK-FIX-SUMMARY.md
+QUICK-ACCESS-GUIDE.md
+README-SETUP-COMPLETE.md
+UPLOAD-MONITORING-GUIDE.md
+check-immich-jobs.md
+recyclarr-setup.md
+
+# Root-level custom formats (moved to recyclarr/custom-formats/)
+/custom-format-*.json
+
+# Setup scripts (contain real paths/IPs)
+setup-recyclarr.sh
+
+# PowerShell scripts (personal tooling)
+*.ps1

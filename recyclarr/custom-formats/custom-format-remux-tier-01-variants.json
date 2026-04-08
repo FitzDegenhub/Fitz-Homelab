@@ -1,0 +1,123 @@
+{
+  "name": "Remux Tier 01 (Variants)",
+  "includeCustomFormatWhenRenaming": false,
+  "specifications": [
+    {
+      "name": "Remux Quality",
+      "implementation": "QualityModifierSpecification",
+      "negate": false,
+      "required": true,
+      "fields": {
+        "value": 5
+      }
+    },
+    {
+      "name": "FraMeSToR (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bFraMeSToR\\b"
+      }
+    },
+    {
+      "name": "EPSiLON (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bEPSiLON\\b"
+      }
+    },
+    {
+      "name": "3L (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\b3L\\b"
+      }
+    },
+    {
+      "name": "BMF (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bBMF\\b"
+      }
+    },
+    {
+      "name": "HQMUX (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bHQMUX\\b"
+      }
+    },
+    {
+      "name": "PmP (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bPmP\\b"
+      }
+    },
+    {
+      "name": "BiZKiT (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bBiZKiT\\b"
+      }
+    },
+    {
+      "name": "BLURANiUM (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bBLURANiUM\\b"
+      }
+    },
+    {
+      "name": "CiNEPHiLES (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bCiNEPHiLES\\b"
+      }
+    },
+    {
+      "name": "PiRAMiDHEAD (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bPiRAMiDHEAD\\b"
+      }
+    },
+    {
+      "name": "WiLDCAT (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bWiLDCAT\\b"
+      }
+    },
+    {
+      "name": "ZQ (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bZQ\\b"
+      }
+    }
+  ]
+}

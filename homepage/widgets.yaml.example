@@ -1,0 +1,36 @@
+---
+# Homepage Widgets
+
+- logo:
+    icon: https://raw.githubusercontent.com/walkxcode/dashboard-icons/main/png/jellyfin.png
+
+- search:
+    provider: google
+    target: _blank
+
+- greeting:
+    text_size: xl
+    text: "My Media Server"
+
+- datetime:
+    text_size: l
+    format:
+      dateStyle: long
+      timeStyle: short
+      hour12: false
+
+- openmeteo:
+    label: Your City
+    latitude: 0.00
+    longitude: 0.00
+    timezone: Your/Timezone
+    units: metric
+    cache: 5
+
+- resources:
+    cpu: true
+    memory: true
+    disk: /volume1
+    uptime: true
+    units: metric
+    refresh: 3000

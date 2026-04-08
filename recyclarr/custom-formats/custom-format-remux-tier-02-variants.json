@@ -1,0 +1,60 @@
+{
+  "name": "Remux Tier 02 (Variants)",
+  "includeCustomFormatWhenRenaming": false,
+  "specifications": [
+    {
+      "name": "Remux Quality",
+      "implementation": "QualityModifierSpecification",
+      "negate": false,
+      "required": true,
+      "fields": {
+        "value": 5
+      }
+    },
+    {
+      "name": "NCmt (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bNCmt\\b"
+      }
+    },
+    {
+      "name": "playBD (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bplayBD\\b"
+      }
+    },
+    {
+      "name": "SiCFoI (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bSiCFoI\\b"
+      }
+    },
+    {
+      "name": "SURFINBIRD (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bSURFINBIRD\\b"
+      }
+    },
+    {
+      "name": "TEPES (anywhere in title)",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bTEPES\\b"
+      }
+    }
+  ]
+}

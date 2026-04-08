@@ -1,0 +1,223 @@
+{
+  "name": "WEB Tier 03 (Variants)",
+  "includeCustomFormatWhenRenaming": false,
+  "specifications": [
+    {
+      "name": "WEBDL Source",
+      "implementation": "SourceSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": 3
+      }
+    },
+    {
+      "name": "WEBRIP Source",
+      "implementation": "SourceSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": 4
+      }
+    },
+    {
+      "name": "BLUTONiUM",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bBLUTONiUM\\b"
+      }
+    },
+    {
+      "name": "BTW",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bBTW\\b"
+      }
+    },
+    {
+      "name": "Chotab",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bChotab\\b"
+      }
+    },
+    {
+      "name": "CiT",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bCiT\\b"
+      }
+    },
+    {
+      "name": "DEEP",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bDEEP\\b"
+      }
+    },
+    {
+      "name": "iJP",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\biJP\\b"
+      }
+    },
+    {
+      "name": "iKA",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\biKA\\b"
+      }
+    },
+    {
+      "name": "iT00NZ",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\biT00NZ\\b"
+      }
+    },
+    {
+      "name": "LAZY",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bLAZY\\b"
+      }
+    },
+    {
+      "name": "NYH",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bNYH\\b"
+      }
+    },
+    {
+      "name": "OPUS",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bOPUS\\b"
+      }
+    },
+    {
+      "name": "PAXA",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bPAXA\\b"
+      }
+    },
+    {
+      "name": "PEXA",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bPEXA\\b"
+      }
+    },
+    {
+      "name": "playWEB",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bplayWEB\\b"
+      }
+    },
+    {
+      "name": "PSiG",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bPSiG\\b"
+      }
+    },
+    {
+      "name": "ROCCaT",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bROCCaT\\b"
+      }
+    },
+    {
+      "name": "SDCC",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bSDCC\\b"
+      }
+    },
+    {
+      "name": "SMURF",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bSMURF\\b"
+      }
+    },
+    {
+      "name": "SPiRiT",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bSPiRiT\\b"
+      }
+    },
+    {
+      "name": "TEPES",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bTEPES\\b"
+      }
+    },
+    {
+      "name": "TVSmash",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bTVSmash\\b"
+      }
+    },
+    {
+      "name": "XEPA",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bXEPA\\b"
+      }
+    }
+  ]
+}
+

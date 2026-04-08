@@ -1,0 +1,16 @@
+{
+  "name": "Multi-Disc (Block)",
+  "includeCustomFormatWhenRenaming": false,
+  "specifications": [
+    {
+      "name": "Multi-Disc Pattern",
+      "implementation": "ReleaseTitleSpecification",
+      "negate": false,
+      "required": false,
+      "fields": {
+        "value": "\\bDIS[CK][. -]?\\d\\b"
+      }
+    }
+  ]
+}
+
